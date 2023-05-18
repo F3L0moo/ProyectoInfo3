@@ -8,6 +8,11 @@ import java.io.InputStreamReader;
 
 public class Gramatica{
 
+	static void pasarGLDaAFN(String archivo) {
+		GLDaAFN afn = new GLDaAFN(archivo);
+		afn.getInfo();
+	}
+
 	public static void main(String[] args) throws Exception{
 		//Su codigo aqui
 		if (args.length == 0) {
@@ -15,8 +20,8 @@ public class Gramatica{
 			return;
 		}
 		if(args[1].equals("-afn")) {
-			GLDaAFN afn = new GLDaAFN(args[0]);
-			afn.getInfo();
+			pasarGLDaAFN(args[0]);
+			
 		}
 		if(args[1].equals("-afd")){
 
@@ -27,8 +32,6 @@ public class Gramatica{
 
 		//################ GLD a AFN ########################################
 		
-		
-
 		
 	}
 }
