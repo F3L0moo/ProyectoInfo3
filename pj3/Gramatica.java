@@ -1,4 +1,10 @@
 import javax.swing.plaf.nimbus.State;
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Arrays;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Gramatica{
 
@@ -9,7 +15,8 @@ public class Gramatica{
 			return;
 		}
 		if(args[1].equals("-afn")) {
-
+			GLDaAFN afn = new GLDaAFN(args[0]);
+			afn.getInfo();
 		}
 		if(args[1].equals("-afd")){
 
@@ -18,9 +25,10 @@ public class Gramatica{
 
 		}
 
-		//################   AFN      ########################################
-		static void GLDaAFN(String nombreArchivo) throws Exception{
-			return;
-		}
+		//################ GLD a AFN ########################################
+		
+		
+
+		
 	}
 }

@@ -1,6 +1,6 @@
 12/12/2001,aceptada
-12/2/1995,rechazada
-02/00/0000,aceptada
+12/2/1995,rec
+02/00/0000,aceptadahazada
 34/45//,rechazada
 //,rechazada
 12984/4123,rechazada
