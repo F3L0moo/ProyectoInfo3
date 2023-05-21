@@ -11,6 +11,7 @@ public class Gramatica{
 	static void pasarGLDaAFN(String archivo) {
 		GLDaAFN afn = new GLDaAFN(archivo);
 		afn.getInfo();
+		afn.createAFNfile(archivo);
 	}
 
 	public static void main(String[] args) throws Exception{

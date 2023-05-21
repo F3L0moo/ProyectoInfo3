@@ -8,6 +8,7 @@ import java.lang.reflect.Constructor;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.ArrayList;
+import java.io.FileWriter;
 
 public class GLDaAFN {
     HashMap<String, String> estadosGLD = new HashMap<>();
@@ -17,6 +18,7 @@ public class GLDaAFN {
     public String[] estadosNumeros = {};
     public String[] abcedario = {};
     public String[] estadosO = {};
+    public String abc = "";
     public String inicial = "";
     public int transEstados = 0;
     public String[] estadosF = {};
@@ -31,8 +33,8 @@ public class GLDaAFN {
             String[] estados = cadena.split(",");
             int transEstadosT = estados.length + 1; 
             cadena = file.readLine();
+            this.abc = cadena;
             this.abcedario = cadena.split(",");
-            String[] abecedario = cadena.split(",");
             cadena = file.readLine();
             this.inicial = cadena;   
 
@@ -87,5 +89,28 @@ public class GLDaAFN {
         for(int x = 0; x < transiciones.size(); x++) {
             System.out.println(transiciones.get(x));
         }
+    }
+
+    public void createAFNfile(String archivo){
+        String nAr = archivo;
+
+        String subnAr = archivo.substring(0, nAr.length() - 4);
+        subnAr = subnAr + ".afn";
+        System.out.println(subnAr);
+
+        try {
+            FileWriter archivoNuevo = new FileWriter(subnAr);
+
+            archivoNuevo.write(this.abc + "\n");
+            archivoNuevo.write(this.transEstados + "\n");
+            archivoNuevo.write(this.estadosF.length + "\n");
+
+
+
+            archivoNuevo.close();
+        } catch (Throwable e) {
+            System.out.println("Hubo un error al crear el archivo, intente mas tarde");
+        }
+        
     }
 }
