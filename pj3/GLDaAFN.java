@@ -18,6 +18,8 @@ public class GLDaAFN {
     public String[] abcedario = {};
     public String[] estadosO = {};
     public String inicial = "";
+    public int transEstados = 0;
+    public String[] estadosF = {};
     
     
     public GLDaAFN(String archivo) {
@@ -27,33 +29,40 @@ public class GLDaAFN {
             cadena = file.readLine();
             this.estadosO = cadena.split(",");
             String[] estados = cadena.split(",");
-            int transEstados = estados.length; 
+            int transEstadosT = estados.length + 1; 
             cadena = file.readLine();
             this.abcedario = cadena.split(",");
             String[] abecedario = cadena.split(",");
             cadena = file.readLine();
             this.inicial = cadena;   
 
+            String estadosFT = "";
             while ((cadena = file.readLine()) != null) {
                 String[] prueba = {};
                 prueba = cadena.split("->");
                 char[] separador = {};
 
-                /*if(prueba[1].length() > 2) {
+                if(prueba[1].length() > 2) {
                     for (int x = 0; x < estados.length; x++) {
-                        if (prueba[0] == estados[x]) {
-                            transEstados++;
+                        if (prueba[0].equals(estados[x])) {
+                            transEstadosT = transEstadosT + 1;
                         }
                     }
                     separador = prueba[1].toCharArray();
-                    transiciones.add(prueba[0]+ " " + separador[0] + separador[2]);
-                    transiciones.add(prueba[0]+ " " + separador[1] + separador[2]);
-                } else {
+                    transiciones.add(prueba[0]+ "->" + separador[0] + separador[2]);
+                    transiciones.add(prueba[0]+ "1->" + separador[1] + separador[2]);
+                } else if(prueba[1].length() == 2) {
+                    transiciones.add(cadena);
+                } else if(prueba[1].length() == 1) {
+                    estadosFT += prueba[0] + ",";
 
-                }*/
+                    transiciones.add(cadena);
+                }
 
             }
-            
+            this.estadosF = estadosFT.split(",");
+
+            this.transEstados = transEstadosT;
             file.close(); 
 
         }catch(FileNotFoundException e) {
@@ -65,12 +74,18 @@ public class GLDaAFN {
     }
 
     public void getInfo() {
-        System.out.println(this.estadosO[2]);
+        for(int x = 0; x < this.estadosO.length; x++) {
+            System.out.print(this.estadosO[x] + " ");
+        }
         for(int x = 0; x < this.abcedario.length; x++) {
             System.out.print(this.abcedario[x] + " ");
         }
         //System.out.println(this.prueba[1]);
-        System.out.println(transiciones.get(0));
         System.out.println(this.inicial);
+        System.out.println(this.estadosF[1]);
+        System.out.println(this.transEstados);
+        for(int x = 0; x < transiciones.size(); x++) {
+            System.out.println(transiciones.get(x));
+        }
     }
 }
