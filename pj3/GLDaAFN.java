@@ -52,7 +52,7 @@ public class GLDaAFN {
                     }
                     separador = prueba[1].toCharArray();
                     transiciones.add(prueba[0]+ "->" + separador[0] + separador[2]);
-                    transiciones.add(prueba[0]+ "1->" + separador[1] + separador[2]);
+                    transiciones.add(prueba[0]+ "->" + separador[1] + separador[2]);
                 } else if(prueba[1].length() == 2) {
                     transiciones.add(cadena);
                 } else if(prueba[1].length() == 1) {
@@ -98,12 +98,28 @@ public class GLDaAFN {
         subnAr = subnAr + ".afn";
         System.out.println(subnAr);
 
+        String esFinAFD = "";
+        int estact = 100000;
         try {
             FileWriter archivoNuevo = new FileWriter(subnAr);
 
+            for(int x = 0; x < estadosO.length; x++){
+                for(int y = 0; y < estadosF.length; y++){
+                    if(estadosO[x].equals(estadosF[y])){
+                        if(estact != x) {
+                            esFinAFD+=(x+1)+",";
+                        }
+                        estact = x;
+                    }
+                }
+            }
+            String finAFD = esFinAFD.substring(0, esFinAFD.length() - 1);
+
+            
+
             archivoNuevo.write(this.abc + "\n");
             archivoNuevo.write(this.transEstados + "\n");
-            archivoNuevo.write(this.estadosF.length + "\n");
+            archivoNuevo.write(finAFD + "\n");
 
 
 
