@@ -39,18 +39,18 @@ public class GLDaAFN {
                 prueba = cadena.split("->");
                 char[] separador = {};
 
-                if(prueba[1].length() < 2) {
+                /*if(prueba[1].length() > 2) {
                     for (int x = 0; x < estados.length; x++) {
                         if (prueba[0] == estados[x]) {
                             transEstados++;
                         }
                     }
                     separador = prueba[1].toCharArray();
-                    transiciones.add(prueba[0] + separador[0] + separador[2]);
-                    transiciones.add(prueba[0] + separador[1] + separador[2]);
+                    transiciones.add(prueba[0]+ " " + separador[0] + separador[2]);
+                    transiciones.add(prueba[0]+ " " + separador[1] + separador[2]);
                 } else {
 
-                }
+                }*/
 
             }
             
@@ -65,11 +65,12 @@ public class GLDaAFN {
     }
 
     public void getInfo() {
-        System.out.println(this.estados[2]);
+        System.out.println(this.estadosO[2]);
         for(int x = 0; x < this.abcedario.length; x++) {
             System.out.print(this.abcedario[x] + " ");
         }
-        System.out.println(this.prueba[1]);
+        //System.out.println(this.prueba[1]);
+        System.out.println(transiciones.get(0));
         System.out.println(this.inicial);
     }
 }
