@@ -21,6 +21,7 @@ public class GLDaAFN {
     public String abc = "";
     public String inicial = "";
     public String[] estadosF = {};
+    public int numVariables = 0;
     
     
     public GLDaAFN(String archivo) {
@@ -39,6 +40,7 @@ public class GLDaAFN {
             String estadosFT = "";
             int cont = 1;
             int contEq = 1;
+            int numVariablesT = estados.length;
             while ((cadena = file.readLine()) != null) {
                 String[] prueba = {};
                 prueba = cadena.split("->");
@@ -46,6 +48,7 @@ public class GLDaAFN {
 
                 if(prueba[1].length() > 2) {    
                     separador = prueba[1].toCharArray();
+                    numVariablesT++;
                     transiciones.add(prueba[0]+ "->" + separador[0] + prueba[0]+cont);
                     transiciones.add(prueba[0]+cont+ "->" + separador[1] + separador[2]);
                     cont++;
@@ -57,6 +60,7 @@ public class GLDaAFN {
                         if(var.equals(var.toUpperCase())){
                             transiciones.add(cadena);
                         }else {
+                            numVariablesT++;
                             transiciones.add(prueba[0]+"->"+separador[0]+prueba[0]+contEq);
                             transiciones.add(prueba[0]+contEq+"->"+separador[1]);
                         }
@@ -67,6 +71,7 @@ public class GLDaAFN {
                 }
 
             }
+            this.numVariables = numVariablesT;
             this.estadosF = estadosFT.split(",");
             file.close(); 
 
@@ -121,7 +126,7 @@ public class GLDaAFN {
 
 
             archivoNuevo.write(this.abc + "\n");
-            archivoNuevo.write(transiciones.size() + "\n");
+            archivoNuevo.write((this.numVariables+1) + "\n");
             archivoNuevo.write(finAFD + "\n");
 
 
