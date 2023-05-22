@@ -96,3 +96,7 @@ public class Checker{
         }
     }
 }
+
+
+//Hecho por Fernando Josue Lopez Moore 22000114
+//Hecho por Daniel Herrarte 22001722
