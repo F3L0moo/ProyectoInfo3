@@ -15,15 +15,15 @@ public class Gramatica{
 	}
 
 	static void pasarGLDaAFD(String archivo) {
-		GLDaAFN afn = new GLDaAFN(archivo);
+		GLDaAFD afd = new GLDaAFD(archivo);
 		//afn.getInfo();
-		afn.createAFNfile(archivo);
+		afd.createAFDfile(archivo);
 	}
 
 	static void checker(String archivoGramatica, String archivoCuerdas){
 		Checker check = new Checker(archivoGramatica, archivoCuerdas);
 		check.getInfo();
-
+		
 	}
 
 	public static void main(String[] args) throws Exception{

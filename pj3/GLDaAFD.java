@@ -24,7 +24,7 @@ public class GLDaAFD {
     public int numVariables = 0;
     
     
-    public GLDaAFN(String archivo) {
+    public GLDaAFD(String archivo) {
         try {
             BufferedReader file = new BufferedReader(new FileReader(archivo));
             String cadena = "";
@@ -119,7 +119,7 @@ public class GLDaAFD {
         }
     }
 
-    public void createAFNfile(String archivo){
+    public void createAFDfile(String archivo){
         String nAr = archivo;
 
         String subnAr = archivo.substring(0, nAr.length() - 4);
