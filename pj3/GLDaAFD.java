@@ -1,7 +1,9 @@
 public class GLDaAFD {
     public String prueba = "";
 
-    public Prueba(String prueba) {
+    
+
+    public void Prueba(String prueba) {
         this.prueba = "prueba";
     }
 }

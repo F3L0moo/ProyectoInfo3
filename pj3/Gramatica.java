@@ -1,10 +1,5 @@
-import javax.swing.plaf.nimbus.State;
-import java.util.Scanner;
-import java.util.HashMap;
-import java.util.Arrays;
-import java.io.File;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.*;
+import java.io.*;
 
 public class Gramatica{
 
