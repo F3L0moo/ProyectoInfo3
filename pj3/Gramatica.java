@@ -17,7 +17,7 @@ public class Gramatica{
 	static void checker(String archivoGramatica, String archivoCuerdas){
 		Checker check = new Checker(archivoGramatica, archivoCuerdas);
 		check.getInfo();
-		
+
 	}
 
 	public static void main(String[] args) throws Exception{

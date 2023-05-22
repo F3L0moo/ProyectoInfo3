@@ -11,7 +11,6 @@ import java.io.FileWriter;
 
 
 public class Checker{
-    HashMap<String, String> estadosGLD = new HashMap<>();
     ArrayList<String> cuerdas = new ArrayList<String>();
     ArrayList<String> transiciones = new ArrayList<String>();
 
