@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Gramatica{
+public class Gramatica {
 
 	static void pasarGLDaAFN(String archivo) {
 		GLDaAFN afn = new GLDaAFN(archivo);
@@ -23,7 +23,8 @@ public class Gramatica{
 
 		}
 		if(args[1].equals("-check")){
-
+			Checker myFile = new Checker(args[2]);
+			myFile.getInfo();
 		}
 
 		//################ GLD a AFN ########################################
