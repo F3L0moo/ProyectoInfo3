@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,9 +9,10 @@ import java.util.Queue;
 import java.util.ArrayList;
 import java.io.FileWriter;
 
-public class GLDaAFN {
+
+public class Checker{
     HashMap<String, String> estadosGLD = new HashMap<>();
-    //Queue<String> gld = new LinkedList<String>();
+    ArrayList<String> cuerdas = new ArrayList<String>();
     ArrayList<String> transiciones = new ArrayList<String>();
 
     public String[] estadosNumeros = {};
@@ -24,9 +24,9 @@ public class GLDaAFN {
     public int numVariables = 0;
     
     
-    public GLDaAFN(String archivo) {
+    public Checker(String archivoGramatica, String archivoCuerdas) {
         try {
-            BufferedReader file = new BufferedReader(new FileReader(archivo));
+            BufferedReader file = new BufferedReader(new FileReader(archivoGramatica));
             String cadena = "";
             cadena = file.readLine();
             this.estadosO = cadena.split(",");
@@ -75,7 +75,11 @@ public class GLDaAFN {
             this.estadosF = estadosFT.split(",");
             file.close(); 
 
+            BufferedReader filec = new BufferedReader(new FileReader(archivoCuerdas));
 
+            while ((cadena = filec.readLine()) != null) {
+                cuerdas.add(cadena);
+            }
         }catch(FileNotFoundException e) {
             System.out.println("ARCHIVO NO VALIDO");
         }catch(IOException e) {
@@ -85,63 +89,11 @@ public class GLDaAFN {
     }
 
     public void getInfo() {
-        for(int x = 0; x < this.estadosO.length; x++) {
-            System.out.print(this.estadosO[x] + " ");
-        }
-        for(int x = 0; x < this.abcedario.length; x++) {
-            System.out.print(this.abcedario[x] + " ");
-        }
-        //System.out.println(this.prueba[1]);
-        System.out.println(this.inicial);
-        System.out.println(this.estadosF[0]);
-        System.out.println(transiciones.size());
         for(int x = 0; x < transiciones.size(); x++) {
             System.out.println(transiciones.get(x));
         }
-    }
-
-    public void createAFNfile(String archivo){
-        String nAr = archivo;
-
-        String subnAr = archivo.substring(0, nAr.length() - 4);
-        subnAr = subnAr + ".afd";
-        System.out.println(subnAr);
-
-        String esFinAFD = "";
-        int estact = 100000;
-        try {
-            FileWriter archivoNuevo = new FileWriter(subnAr);
-
-            for(int x = 0; x < estadosO.length; x++){
-                for(int y = 0; y < estadosF.length; y++){
-                    if(estadosO[x].equals(estadosF[y])){
-                        if(estact != x) {
-                            esFinAFD+=(x+1)+",";
-                        }
-                        estact = x;
-                    }
-                }
-            }
-            String finAFD = esFinAFD.substring(0, esFinAFD.length() - 1);
-
-            for(int x = 0; x < transiciones.size(); x++) {
-                String[] tempo = transiciones.get(x).split("->");
-                //System.out.println(tempo[1]);
-                char[] contenedor = tempo[1].toCharArray();
-                char abc = contenedor[0];
-
-            }
-
-            archivoNuevo.write(this.abc + "\n");
-            archivoNuevo.write((this.numVariables+1) + "\n");
-            archivoNuevo.write(finAFD + "\n");
-
-
-
-            archivoNuevo.close();
-        } catch (Throwable e) {
-            System.out.println("Hubo un error al crear el archivo, intente de nuevo");
+        for (int i = 0; i < cuerdas.size(); i++) {
+            System.out.println(cuerdas.get(i));
         }
-        
     }
 }

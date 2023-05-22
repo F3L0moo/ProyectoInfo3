@@ -10,8 +10,14 @@ public class Gramatica{
 
 	static void pasarGLDaAFN(String archivo) {
 		GLDaAFN afn = new GLDaAFN(archivo);
-		afn.getInfo();
+		//afn.getInfo();
 		afn.createAFNfile(archivo);
+	}
+
+	static void checker(String archivoGramatica, String archivoCuerdas){
+		Checker check = new Checker(archivoGramatica, archivoCuerdas);
+		check.getInfo();
+		
 	}
 
 	public static void main(String[] args) throws Exception{
@@ -28,7 +34,7 @@ public class Gramatica{
 
 		}
 		if(args[1].equals("-check")){
-
+			checker(args[0], args[3]);
 		}
 
 		//################ GLD a AFN ########################################
